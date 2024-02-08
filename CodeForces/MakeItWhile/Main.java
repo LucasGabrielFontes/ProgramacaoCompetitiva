@@ -26,6 +26,8 @@ public class Main {
 			
 			String frase = teclado.nextLine();
 			
+			teclado.close();
+
 			int indice1 = -1;
 			int indice2 = 0;
 			
