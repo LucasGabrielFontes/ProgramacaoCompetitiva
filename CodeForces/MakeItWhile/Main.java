@@ -1,3 +1,5 @@
+// Autor: Lucas Gabriel Fontes da Silva
+
 import java.util.Scanner;
 
 public class Main {
