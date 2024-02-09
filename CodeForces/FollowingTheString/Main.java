@@ -1,3 +1,5 @@
+// Autor: Lucas Gabriel Fontes da Silva
+
 import java.util.Scanner;
 
 public class Main {
@@ -6,41 +8,43 @@ public class Main {
 
         Scanner teclado = new Scanner(System.in);
 
-        int t = teclado.nextInt();
+        int t = teclado.nextInt(); // recebe a o número de testes
 
         for (int i = 0; i < t; i++) {
 
-            int n = teclado.nextInt();
+            int n = teclado.nextInt(); // recebe o tamanho da String
 
-            int letraAtual = 97;
-            int numeros[] = new int[n];
-            int vezesRepetidas[] = new int[n];
-            char string[] = new char[n];
+            int letraAtual = 97; // letra 'a' na tabela ascii
+            int numeros[] = new int[n]; // armazenará a String (aqui, por enquanto, tratada como um vetor de int)
+            char string[] = new char[n]; // armazenará a resposta final (palavra rastreada)
+
+            for (int aux = 0; aux < n; aux++) { // lê todos os valores do vetor
+                numeros[aux] = teclado.nextInt(); 
+            }
 
             for (int aux = 0; aux < n; aux++) {
 
-                numeros[aux] = teclado.nextInt();
+                if (numeros[aux]  == 0) { // se o valor é 0, significa que uma nova letra deve ser adicionada
+                    string[aux] = (char) letraAtual;
+                    letraAtual++; // incrementa 1 no valor da letra da tabela ascii
 
-                if (numeros[aux] == 0) {
-                    string[aux] = (char) letraAtual; // Faço a conversão de um número em seu caractere correspondente na tabela ascii.
-                    vezesRepetidas[aux] = 0;
-                    letraAtual++;
-                } else {
-                    for (int cont = 0; cont < aux; cont++) {
-                        if (vezesRepetidas[cont] + 1 == numeros[aux]) {
-                            string[aux] = string[cont];
-                            vezesRepetidas[cont]++; // O problema tá aqui, possivelmente. Não estou atualizando as vezesRepetidas de todos os índices que contém a mesma letra.
-                            vezesRepetidas[aux] = vezesRepetidas[cont] + 1;
-                            cont = aux;
+                    for (int aux2 = aux+1 ; aux2 < n; aux2++) { // percorre toda a string para frente, a fim de preencher as letras na sequência correta
+                        if (numeros[aux2] == numeros[aux] + 1) {
+                            string[aux2] = string[aux];
+                            numeros[aux]++;
+                            numeros[aux2] = -2; // atribue-se -2 para essa posição não interferir em outros testes
                         }
                     }
+
+                    numeros[aux] = -2; // atribue-se -2 para essa posição não interferir em outros testes
+
                 }
 
             }
 
-            String resp = new String(string); // Transformo um vetor de caracteres em uma String.
+            String resp = new String(string); // transformo o vetor de caracteres em uma String
 
-            System.out.println(resp);
+            System.out.println(resp); // imprimo a resposta, finalmente. HAHA!
 
         }
 
