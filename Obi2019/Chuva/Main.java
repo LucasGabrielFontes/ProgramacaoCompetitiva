@@ -1,3 +1,4 @@
+// Autor: Lucas Gabriel Fontes da Silva
 // OBS: esse código ainda está em desenvolvimento
 
 import java.util.Scanner;
@@ -23,16 +24,18 @@ public class Main {
 
         }
 
-        for (int j = 0; j < matriz[0].length; j++) {
-            for (int i = 0; i < matriz.length; i++) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
 
-                if (matriz[i][j] != '#') {
+                if (matriz[i][j] == '.') {
 
-                    if (i-1 >= 0 && matriz[i-1][j] == 'o') {
+                    if ((i-1 >= 0 && matriz[i-1][j] == 'o') ||
+                            (j-1 >= 0 && i+1 < matriz.length && matriz[i][j-1] == 'o' && matriz[i+1][j-1] == '#') ||
+                            (j+1 < matriz[0].length && i+1 < matriz.length && matriz[i][j+1] == 'o' && matriz[i+1][j+1] == '#')) {
 
                         matriz[i][j] = 'o';
 
-                    } 
+                    }
 
                 }
 
