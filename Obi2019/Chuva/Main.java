@@ -24,7 +24,6 @@ public class Main {
         }
 
         for (int j = 0; j < matriz[0].length; j++) {
-
             for (int i = 0; i < matriz.length; i++) {
 
                 if (matriz[i][j] != '#') {
@@ -35,16 +34,9 @@ public class Main {
 
                     } 
 
-                    if (j-1 >= 0 && i+1 < matriz.length && matriz[i][j-1] == 'o' && matriz[i+1][j-1] != '.') {
-
-                        matriz[i][j] = 'o';
-
-                    }
-
                 }
 
             }
-
         }
 
         mostraMatriz(matriz);
