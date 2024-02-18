@@ -48,7 +48,7 @@ public class Main {
 
     }
 
-    public static void mostraMatriz (char matriz[][]) {
+    public static void mostraMatriz(char matriz[][]) {
 
         for (int i = 0; i < matriz.length; i++) {
 
