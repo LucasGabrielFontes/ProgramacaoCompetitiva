@@ -1,4 +1,4 @@
-//Autor: Lucas Gabriel Fontes da Silva
+// Autor: Lucas Gabriel Fontes da Silva
 // Propósito: dado o termo inicial, o termo final e um valor de acréscimo, determinar a progressão aritmética
 
 import java.util.Scanner;
