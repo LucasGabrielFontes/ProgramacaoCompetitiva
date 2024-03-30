@@ -1,3 +1,5 @@
+// OBS: o código resolve o problema, mas não está otimizado o suficiente para ser aceito juiz do BeeCrowd.
+
 #include <stdio.h>
 
 int main (void) {
