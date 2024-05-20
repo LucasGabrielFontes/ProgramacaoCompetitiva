@@ -19,6 +19,12 @@ int main() {
 		cout << "\nO loop nao foi executado nenhuma vez.\n";
 	}
 	
+	// O loop for tambem e usado para pausar a execucao do programa
+	//
+	// for vazio:
+	//
+	// for (int temp = 0; temp < 1000000000; temp++);
+	
 	// E possivel declarar mais de uma variavel na inicializacao de variaveis do for
 	for (int i = 0; i < contador; i++) {
 		cout << "Execucao " << i+1 << "." << endl;
