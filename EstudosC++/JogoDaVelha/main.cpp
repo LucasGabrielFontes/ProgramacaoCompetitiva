@@ -11,7 +11,8 @@ using namespace std;
 
 int contaLinhasArquivo(ifstream& arquivo);
 void preencheVetorPalavras (ifstream& arquivo, string palavras[]);
-void mostraComprimentoPalavra (string palavra);
+void mostraPalavraIncompleta (char palavra[], int tam);
+void preenchePalavraIncompleta (char palavra[], int tam);
 
 int main () {
 
@@ -77,9 +78,12 @@ int main () {
 
         string palavraDaRodada = palavras[numeroAleatorio];
 
+        char palavraIncompleta[palavraDaRodada.size() + 1];
+        preenchePalavraIncompleta(palavraIncompleta, palavraDaRodada.size());
+
         cout << palavraDaRodada << endl;
 
-        mostraComprimentoPalavra(palavraDaRodada);
+        mostraPalavraIncompleta(palavraIncompleta, palavraDaRodada.size());
 
         cout << "Deseja jogar outra vez?\n\n1 - sim\n0 - nao\n";
         cin >> resp;
@@ -145,14 +149,24 @@ void preencheVetorPalavras (ifstream& arquivo, string palavras[]) {
 
 }
 
-void mostraComprimentoPalavra (string palavra) {
+void mostraPalavraIncompleta (char palavra[], int tam) {
 
-    int tamanhoPalavra = palavra.size();
-
-    for (int i = 0; i < tamanhoPalavra; i++) {
-        cout << "_";
+    for (int i = 0; i < tam; i++) {
+        cout << palavra[i];
     }
 
     cout << endl;
+
+}
+
+void preenchePalavraIncompleta (char palavra[], int tam) {
+
+    int i = 0;
+
+    for (; i < tam; i++) {
+        palavra[i] = '_';
+    }
+
+    palavra[i] = '\0';
 
 }
