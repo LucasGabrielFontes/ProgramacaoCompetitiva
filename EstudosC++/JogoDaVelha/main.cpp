@@ -16,8 +16,8 @@ void preenchePalavraIncompleta (char palavra[], int tam);
 
 int main () {
 
-    unsigned semente = time(0);
-    srand(semente);
+    unsigned semente = time(0); // Cria a semente de geracao de numeros aleatorios
+    srand(semente); // Cria o gerador de numeros aleatorios com a semente
 
     bool resp = 0; // Armazena a escolha do usuario de continuar ou nao para outra rodada
 
@@ -41,7 +41,7 @@ int main () {
 
     do {
         
-        bool reutilizarArquivo = 0;
+        bool reutilizarArquivo = 0; // Armazena a opcao do usuario de reutilizar ou nao o arquivo da rodada anterior
 
         if (resp) {
 
@@ -74,26 +74,26 @@ int main () {
 
         }
 
-        int numeroAleatorio = 0 + rand() % linhasArquivo;
+        int numeroAleatorio = 0 + rand() % linhasArquivo; // Gera o numero aleatorio para a escolha da palavra aleatoria entre as existentes no arquivo fornecido
 
-        string palavraDaRodada = palavras[numeroAleatorio];
+        string palavraDaRodada = palavras[numeroAleatorio]; // Captura a palavra aleatoria da rodada
 
-        char palavraIncompleta[palavraDaRodada.size() + 1];
-        preenchePalavraIncompleta(palavraIncompleta, palavraDaRodada.size());
+        char palavraIncompleta[palavraDaRodada.size() + 1]; // Cria o vetor de char que devera ser preenchido pelo usuario em suas tentativas
+        preenchePalavraIncompleta(palavraIncompleta, palavraDaRodada.size()); // Preenche todo o vetor com '_', indicando que a palavra esta totalmente incompleta
 
         cout << palavraDaRodada << endl;
 
-        mostraPalavraIncompleta(palavraIncompleta, palavraDaRodada.size());
+        mostraPalavraIncompleta(palavraIncompleta, palavraDaRodada.size()); // Mostra o estado atual da palavra que deve ser completada
 
-        cout << "Deseja jogar outra vez?\n\n1 - sim\n0 - nao\n";
+        cout << "Deseja jogar outra vez?\n\n1 - sim\n0 - nao\n"; // Pergunt se o usuario deseja jogar novamente
         cin >> resp;
 
-        while (resp != 0 && resp != 1) {
+        while (resp != 0 && resp != 1) { // Valida a resposta
             cout << "Resposta invalida. Tente novamente: ";
             cin >> resp;
         }
 
-        if (resp) {
+        if (resp) { // Limpa a tela para a próxima rodada
             system("cls");
         }
 
