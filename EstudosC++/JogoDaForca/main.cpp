@@ -1,5 +1,5 @@
 // Autor: Lucas Gabriel Fontes da Silva
-// EM DESENVOLVIMENTO
+// EM PROCESSO DE APERFEICOAMENTO
 
 #include <iostream>
 #include <fstream>
@@ -98,8 +98,6 @@ int main () {
             cout << "                       JOGO DA FORCA                         " << endl;
             cout << "=============================================================" << endl << endl;
 
-            cout << endl << palavraDaRodada << endl;
-
             cout << endl << "Tema: " << tema << endl;
 
             cout << endl << "Vidas restantes: " << vidas << endl;
@@ -108,7 +106,7 @@ int main () {
 
             if (letrasAdivinhar <= 3) {
 
-                string tentativaAdivinharPalavra;
+                string tentativaAdivinharPalavra; // Armazena a tentiva do jogador de adivinhar a palavra completa, quando faltam 3 ou menos letras para completar a palavra
 
                 cout << endl << "Faca um tentativa para adivinhar a palavra completa: ";
                 cin >> tentativaAdivinharPalavra;
@@ -143,7 +141,7 @@ int main () {
 
                 int testeContem = 0;
 
-                for (unsigned i = 0; i < palavraDaRodada.size(); i++) {
+                for (unsigned i = 0; i < palavraDaRodada.size(); i++) { // Percorre toda a palavra para indicar se houve acerto ou nao de alguma letra pelo usuario
 
                     if (tolower(palavraDaRodada[i]) == tolower(letraTentativa)) {
                         palavraIncompleta[i] = palavraDaRodada[i];
