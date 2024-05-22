@@ -21,6 +21,7 @@ int main () {
 
     bool resp = 0; // Armazena a escolha do usuario de continuar ou nao para outra rodada
 
+    string tema;
     string nomeArquivo; // Armazena o nome do arquivo seguido da extensao .txt fornecida pelo usuario
     int linhasArquivo = 0; // Armazena a quantidade total de linhas do arquivo .txt
 
@@ -30,6 +31,9 @@ int main () {
 
     cout << "Digite o nome do arquivo, seguido da extensao .txt, que contem as palavras para o jogo da forca (o arquivo deve estar no mesmo diretorio que o programa executavel): ";
     cin >> nomeArquivo;
+
+    cout << endl << "Digite o tema da rodada: ";
+    cin >> tema;
 
     ifstream arquivo(nomeArquivo); // Cria o arquivo a partir do nome fornecido pelo usuario
 
@@ -82,33 +86,82 @@ int main () {
         char palavraIncompleta[palavraDaRodada.size() + 1]; // Cria o vetor de char que devera ser preenchido pelo usuario em suas tentativas
         preenchePalavraIncompleta(palavraIncompleta, palavraDaRodada.size()); // Preenche todo o vetor com '_', indicando que a palavra esta totalmente incompleta
 
-        cout << endl << palavraDaRodada << endl;
+        int letrasAdivinhar = palavraDaRodada.size();
 
         while (vidas > 0) {
 
             char letraTentativa;
 
+            system("cls");
+
+            cout << "=============================================================" << endl;
+            cout << "                       JOGO DA FORCA                         " << endl;
+            cout << "=============================================================" << endl << endl;
+
+            cout << endl << palavraDaRodada << endl;
+
+            cout << endl << "Tema: " << tema << endl;
+
             cout << endl << "Vidas restantes: " << vidas << endl;
 
             mostraPalavraIncompleta(palavraIncompleta, palavraDaRodada.size()); // Mostra o estado atual da palavra que deve ser completada
 
-            cout << endl << "Digite uma letra: ";
-            cin >> letraTentativa;
+            if (letrasAdivinhar <= 3) {
 
-            int testeContem = 0;
+                string tentativaAdivinharPalavra;
 
-            for (unsigned i = 0; i < palavraDaRodada.size(); i++) {
+                cout << endl << "Faca um tentativa para adivinhar a palavra completa: ";
+                cin >> tentativaAdivinharPalavra;
 
-                if (tolower(palavraDaRodada[i]) == tolower(letraTentativa)) {
-                    palavraIncompleta[i] = palavraDaRodada[i];
-                    testeContem++;
+                if (!tentativaAdivinharPalavra.compare(palavraDaRodada)) { // Se as strings forem iguais, o metodo compare() retorna 0
+
+                    for (unsigned i = 0; i < palavraDaRodada.size(); i++) {
+
+                        palavraIncompleta[i] = palavraDaRodada[i];
+
+                    }
+
+                    cout << endl <<"Palavra da rodada: ";
+                    mostraPalavraIncompleta(palavraIncompleta, palavraDaRodada.size());
+                    cout << endl;
+
+                    cout << endl << "PARABENS! Voce acertou! Hehe." << endl << endl;
+                    vidas = 0;
+
+                } else {
+
+                    cout << endl << "IHHHHH, voce perdeu!" << endl;
+                    cout << endl << "A palavra era: " << palavraDaRodada << endl << endl;
+                    vidas = 0;
+
+                }
+
+            } else {
+
+                cout << endl << "Digite uma letra: ";
+                cin >> letraTentativa;
+
+                int testeContem = 0;
+
+                for (unsigned i = 0; i < palavraDaRodada.size(); i++) {
+
+                    if (tolower(palavraDaRodada[i]) == tolower(letraTentativa)) {
+                        palavraIncompleta[i] = palavraDaRodada[i];
+                        testeContem++;
+                        letrasAdivinhar--;
+                    }
+
+                }
+
+                if (!testeContem) {
+                    vidas--;
                 }
 
             }
 
         }
 
-        cout << "Deseja jogar outra vez?\n\n1 - sim\n0 - nao\n"; // Pergunt se o usuario deseja jogar novamente
+        cout << endl <<"Deseja jogar outra vez?\n\n1 - sim\n0 - nao\n"; // Pergunta se o usuario deseja jogar novamente
         cin >> resp;
 
         while (resp != 0 && resp != 1) { // Valida a resposta
