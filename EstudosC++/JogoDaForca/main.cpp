@@ -41,6 +41,7 @@ int main () {
 
     do {
         
+        int vidas = 6;
         bool reutilizarArquivo = 0; // Armazena a opcao do usuario de reutilizar ou nao o arquivo da rodada anterior
 
         if (resp) {
@@ -81,9 +82,31 @@ int main () {
         char palavraIncompleta[palavraDaRodada.size() + 1]; // Cria o vetor de char que devera ser preenchido pelo usuario em suas tentativas
         preenchePalavraIncompleta(palavraIncompleta, palavraDaRodada.size()); // Preenche todo o vetor com '_', indicando que a palavra esta totalmente incompleta
 
-        cout << palavraDaRodada << endl;
+        cout << endl << palavraDaRodada << endl;
 
-        mostraPalavraIncompleta(palavraIncompleta, palavraDaRodada.size()); // Mostra o estado atual da palavra que deve ser completada
+        while (vidas > 0) {
+
+            char letraTentativa;
+
+            cout << endl << "Vidas restantes: " << vidas << endl;
+
+            mostraPalavraIncompleta(palavraIncompleta, palavraDaRodada.size()); // Mostra o estado atual da palavra que deve ser completada
+
+            cout << endl << "Digite uma letra: ";
+            cin >> letraTentativa;
+
+            int testeContem = 0;
+
+            for (unsigned i = 0; i < palavraDaRodada.size(); i++) {
+
+                if (tolower(palavraDaRodada[i]) == tolower(letraTentativa)) {
+                    palavraIncompleta[i] = palavraDaRodada[i];
+                    testeContem++;
+                }
+
+            }
+
+        }
 
         cout << "Deseja jogar outra vez?\n\n1 - sim\n0 - nao\n"; // Pergunt se o usuario deseja jogar novamente
         cin >> resp;
