@@ -14,6 +14,16 @@ void preencheVetorPalavras (ifstream& arquivo, string palavras[]);
 void mostraPalavraIncompleta (char palavra[], int tam);
 void preenchePalavraIncompleta (char palavra[], int tam);
 
+void padronizaPalavraTentativa (string& palavra) {
+
+    palavra[0] = toupper(palavra[0]);
+
+    for (unsigned i = 1; i < palavra.size(); i++) {
+        palavra[i] = tolower(palavra[i]);
+    }
+
+}
+
 int main () {
 
     unsigned semente = time(0); // Cria a semente de geracao de numeros aleatorios
@@ -110,6 +120,8 @@ int main () {
 
                 cout << endl << "Faca um tentativa para adivinhar a palavra completa: ";
                 cin >> tentativaAdivinharPalavra;
+
+                padronizaPalavraTentativa(tentativaAdivinharPalavra);
 
                 if (!tentativaAdivinharPalavra.compare(palavraDaRodada)) { // Se as strings forem iguais, o metodo compare() retorna 0
 
