@@ -1,5 +1,5 @@
 // Autor: Lucas Gabriel Fontes da Silva
-// EM PROCESSO DE APERFEICOAMENTO
+// Jogo da forca em C++, apenas para treinar o básico da sintaxe da linguagem.
 
 #include <iostream>
 #include <fstream>
@@ -13,16 +13,7 @@ int contaLinhasArquivo(ifstream& arquivo);
 void preencheVetorPalavras (ifstream& arquivo, string palavras[]);
 void mostraPalavraIncompleta (char palavra[], int tam);
 void preenchePalavraIncompleta (char palavra[], int tam);
-
-void padronizaPalavraTentativa (string& palavra) {
-
-    palavra[0] = toupper(palavra[0]);
-
-    for (unsigned i = 1; i < palavra.size(); i++) {
-        palavra[i] = tolower(palavra[i]);
-    }
-
-}
+void padronizaPalavraTentativa (string& palavra);
 
 int main () {
 
@@ -254,5 +245,15 @@ void preenchePalavraIncompleta (char palavra[], int tam) {
     }
 
     palavra[i] = '\0';
+
+}
+
+void padronizaPalavraTentativa (string& palavra) {
+
+    palavra[0] = toupper(palavra[0]);
+
+    for (unsigned i = 1; i < palavra.size(); i++) {
+        palavra[i] = tolower(palavra[i]);
+    }
 
 }
