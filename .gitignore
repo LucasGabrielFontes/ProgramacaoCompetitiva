@@ -18,3 +18,4 @@ EstudosC++/.vscode/settings.json
 EstudosC++/JogoDaVelha/output/main.exe
 EstudosC++/JogoDaForca/output/main.exe
 EstudosC++/19-ArgumentosMain/output/main.exe
+*.exe
