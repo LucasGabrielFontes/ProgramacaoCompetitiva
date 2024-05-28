@@ -9,36 +9,33 @@ int main () {
 
     for (int i = 0; i < t; i++) {
 
-        int a, b, x, y;
-        cin >> a;
-        cin >> b;
-        cin >> x;
-        cin >> y;
+        int linhas, colunas, x, y;
+        cin >> linhas >> colunas >> x >> y;
 
-        x++;
+        x++; // Optei por tratar as coordenadas a partir do 1
         y++;
 
         int areaMax = 0;
 
-        if (x <= a/2) {
+        if (x <= linhas/2) { // Divido em casos gerais: o dead pixel só pode estar em um dos quatro quadrantes da tela. Em cada um desses casos, há apenas duas áreas máximas possíveis que não contém o pixel morto.
 
-            if (y <= b/2) {
+            if (y <= colunas/2) {
 
-                areaMax = (a-x)*b;
+                areaMax = (linhas-x)*colunas;
 
-                if (a*(b-y) > areaMax) {
+                if (linhas*(colunas-y) > areaMax) {
 
-                    areaMax = a*(b-y);
+                    areaMax = linhas*(colunas-y);
 
                 }
 
             } else {
 
-                areaMax = (a-x)*b;
+                areaMax = (linhas-x)*colunas;
 
-                if (a*(y-1) > areaMax) {
+                if (linhas*(y-1) > areaMax) {
 
-                    areaMax = a*(y-1);
+                    areaMax = linhas*(y-1);
 
                 }
 
@@ -46,23 +43,23 @@ int main () {
 
         } else {
 
-            if (y <= b/2) {
+            if (y <= colunas/2) {
 
-                areaMax = (x-1)*b;
+                areaMax = (x-1)*colunas;
 
-                if (a*(b-y) > areaMax) {
+                if (linhas*(colunas-y) > areaMax) {
 
-                    areaMax = a*(b-y);
+                    areaMax = linhas*(colunas-y);
 
                 }
 
             } else {
 
-                areaMax = (x-1)*b;
+                areaMax = (x-1)*colunas;
 
-                if (a*(y-1) > areaMax) {
+                if (linhas*(y-1) > areaMax) {
 
-                    areaMax = a*(y-1);
+                    areaMax = linhas*(y-1);
 
                 }
 
