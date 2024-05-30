@@ -7,7 +7,7 @@ int main () {
 	int N;
 	cin >> N;
 	
-	vector < pair<int, int> > pares(61, {0,0});
+	vector < pair<int, int> > pares(61, {0,0}); // O tamanho maximo e 60 e o indice indica o tamanho.
 	
 	int tam;
 	char pe;
