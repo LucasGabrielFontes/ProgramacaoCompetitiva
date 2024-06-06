@@ -15,7 +15,7 @@ int main() {
 
         int tempo = 0;
 
-        set<pair<pair<int, int>, pair<int, int>>> segmentosUnicos;
+        set<pair<pair<int, int>, pair<int, int>>> segmentosUnicos; // Cria um set de pares de coordenadas que identificam um segmento
 
         pair<int, int> coordenada1 = {0,0};
         pair<int, int> coordenada2 = {0, 0};
@@ -44,12 +44,12 @@ int main() {
 
             }
 
-            segmento.first = max(coordenada1, coordenada2);
+            segmento.first = max(coordenada1, coordenada2); // O segmento atual recebe o max e min das coordenadas, pois a ordem das coordenas não importa, uma vez que identificam um mesmo segmento
             segmento.second = min(coordenada1, coordenada2);
 
-            coordenada1 = coordenada2;
+            coordenada1 = coordenada2; // A primeira coordenada e atualizada para o proximo trajeto
 
-            if (segmentosUnicos.find(segmento) == segmentosUnicos.end()) {
+            if (segmentosUnicos.find(segmento) == segmentosUnicos.end()) { // Se o retorno for segmentosUnicos.end(), significa que o trajeto nao havia sido feito anteriormente
                 tempo += 5;
                 segmentosUnicos.insert(segmento);
             } else {
