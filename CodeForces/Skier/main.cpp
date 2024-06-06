@@ -1,5 +1,3 @@
-// Essa versao nao foi aceita em um dos testes do CodeForces. Estou trabalhando nisso.
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -7,53 +5,67 @@ using namespace std;
 int main() {
 
     int t; cin >> t;
+    cin.ignore();
 
     string caminho;
 
     for (; t > 0; t--) {
 
-        cin >> caminho;
+        getline(cin, caminho);
 
         int tempo = 0;
 
-        vector<pair<int, int>> coordenada(caminho.size() + 1);
-        coordenada[0].first = 0;
-        coordenada[0].second = 0;
+        set<pair<pair<int, int>, pair<int, int>>> segmentosUnicos;
 
-        vector<pair<int, int>>:: iterator iterador;
+        pair<int, int> coordenada1 = {0,0};
+        pair<int, int> coordenada2 = {0, 0};
 
-        for (int i = 1; i <= caminho.size(); i++) {
+        pair<pair<int, int>, pair<int, int>> segmento;
 
-            iterador = coordenada.begin() + i;
+        for (int i = 0; i < caminho.size(); i++) {
 
-            switch (caminho[i-1]) {
+            switch (caminho[i]) {
 
                 case 'W':
-                    coordenada[i].first = coordenada[i-1].first - 1;
-                    coordenada[i].second = coordenada[i-1].second;
-                break;
+                    coordenada2.first = coordenada1.first - 1;
+                    break;
 
                 case 'E':
-                    coordenada[i].first = coordenada[i-1].first + 1;
-                    coordenada[i].second = coordenada[i-1].second;
-                break;
+                    coordenada2.first = coordenada1.first + 1;
+                    break;
 
                 case 'N':
-                    coordenada[i].second = coordenada[i-1].second + 1;
-                    coordenada[i].first = coordenada[i-1].first;
-                break;
+                    coordenada2.second = coordenada1.second + 1;
+                    break;
 
                 case 'S':
-                    coordenada[i].second = coordenada[i-1].second - 1;
-                    coordenada[i].first = coordenada[i-1].first;
-                break;
+                    coordenada2.second = coordenada1.second - 1;
+                    break;
 
             }
 
-            if (find(coordenada.begin(), iterador, coordenada[i]) == iterador) {
+            segmento.first = coordenada1;
+            segmento.second = coordenada2;
+
+            segmentosUnicos.insert(segmento);
+
+            coordenada1 = coordenada2;
+
+            if (segmentosUnicos.find(segmento) == segmentosUnicos.end()) {
                 tempo += 5;
+                segmentosUnicos.insert(segmento);
             } else {
-                tempo += 1;
+
+                pair<int, int> temp = segmento.first;
+                segmento.first = segmento.second;
+                segmento.second = temp;
+
+                if (segmentosUnicos.find(segmento) == segmentosUnicos.end()) {
+                    tempo += 5;
+                    segmentosUnicos.insert(segmento);
+                } else {
+                    tempo += 1;
+                }
             }
 
         }
@@ -63,5 +75,4 @@ int main() {
     }
 
     return 0;
-
 }
