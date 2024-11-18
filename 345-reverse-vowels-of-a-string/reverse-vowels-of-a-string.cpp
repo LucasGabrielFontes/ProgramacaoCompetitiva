@@ -19,7 +19,8 @@ public:
 
         int aux = 0;
         for (unsigned int k = 0; k < s.size(); k++){
-            if (s[k] == 'a' || s[k] == 'e' || s[k] == 'i' || s[k] == 'o' || s[k] == 'u' || s[k] == 'A' || s[k] == 'E' || s[k] == 'I' || s[k] == 'O' || s[k] == 'U') {
+            char t = s[k];
+            if (t == 'a' || t == 'e' || t == 'i' || t == 'o' || t == 'u' || t == 'A' || t == 'E' || t == 'I' || t == 'O' || t == 'U') {
                 s[k] = vowels[aux];
                 aux++;
             }
